@@ -20,16 +20,7 @@ INSERT INTO products(product_name, department_name, price, stock_quantity)
 VALUES ("intermediate fight stick", "peripherals",149.99, 5);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("proffesional fight stick", "peripherals",199.99, 5);
-
-INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("introductory fight pad", "peripherals",49.99, 5);
-
-INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("intermediate fight pad", "peripherals",79.99, 5);
-
-INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("professional fight pad", "peripherals",99.99, 5);
+VALUES ("proffessional fight stick", "peripherals",199.99, 5);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
 VALUES ('small 29" mountain bike', "bikes",1999.99, 5);
@@ -39,15 +30,6 @@ VALUES ('medium 29" mountain bike', "bikes",1999.99, 5);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
 VALUES ('large 29" mountain bike', "bikes",1999.99, 5);
-
-INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ('small road bike', "bikes",2099.99, 5);
-
-INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ('medium road bike', "bikes",2099.99, 5);
-
-INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ('large road bike', "bikes",2099.99, 5);
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
 VALUES ("falafel sandwich", "food",7.99, 5);
