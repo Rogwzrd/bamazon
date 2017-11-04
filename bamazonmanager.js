@@ -26,19 +26,15 @@ function commandPrompt() {
     ]).then(function (answers) {
         switch (answers.command) {
             case "View Products for Sale":
-                console.log("Let's view some products");
                 viewAll(commandPrompt);
                 break
             case "View Low Inventory":
-                console.log("where that low inventory at?");
                 viewLow(commandPrompt);
                 break
             case "Add to Inventory":
-                console.log("adding inventory...");
                 addInv(commandPrompt);
                 break
             case "Add New Product":
-                console.log("adding new product");
                 addNewProduct(commandPrompt)
                 break
             case "Exit Program":
@@ -131,7 +127,6 @@ function addNewProduct(cb) {
             cb()
         })
     });
-console.log("adding new product");
 }
 
 commandPrompt();

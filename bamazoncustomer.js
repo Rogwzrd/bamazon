@@ -14,6 +14,7 @@ var connection = mysql.createConnection({
 });
 var availStock = [];
 var purchaseNum = 0;
+var idMax = 0;
 
 function greetingPrompt(){
     inquirer.prompt([
@@ -53,6 +54,7 @@ function purchaseProduct(id, quantity) {
     connection.query("SELECT * FROM products WHERE item_id = ?", [id], function(err, res) {
         if (err) throw err;
         if (res) {
+            idMax = res.length;
             availStock.push(res[0]["stock_quantity"]);
         }
         checkstock(id, quantity)
@@ -66,6 +68,7 @@ function checkstock(id, quantity) {
     } else {
         connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ? ", [availStock - quantity, id], function (err, res) {
             if (err) throw err;
+            idMax = res.length;
             console.log(`Order Processed!`)
             readProducts(id, quantity)
         })
