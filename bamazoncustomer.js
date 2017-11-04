@@ -27,7 +27,6 @@ function greetingPrompt(){
         //what you gon do with at that data
         if (answers.greeting === true) {
             readProducts();
-            purchasePrompt();
         }
     })
 }
@@ -48,21 +47,21 @@ function purchasePrompt() {
         purchaseProduct(answers.id, answers.quantity);
     })
 }
+
 function purchaseProduct(id, quantity) {
 
     connection.query("SELECT * FROM products WHERE item_id = ?", [id], function(err, res) {
         if (err) throw err;
         if (res) {
-            console.log(`The result of the product search for purchase ${JSON.stringify(res, null, 2)}`)
             availStock.push(res[0]["stock_quantity"]);
-            console.log(`The availabe stock is ${availStock}`);
         }
         checkstock(id, quantity)
     })
 }
+
 function checkstock(id, quantity) {
     if (availStock < quantity) {
-        console.log("Insufficient quantity!")
+        console.log("Insufficient quantity!");
         connection.end();
     } else {
         connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ? ", [availStock - quantity, id], function (err, res) {
@@ -85,6 +84,7 @@ function readProducts(id, quantity) {
             for (var i = 0; i < res.length; i++) {
                 console.log(`\nItem ID: ${res[i].item_id}|| Product: ${res[i].product_name}|| Department: ${res[i].department_name}|| Price: ${res[i].price}|| Quantitiy: ${res[i].stock_quantity}`)
             }
+            purchasePrompt();
         });
         //if there is an argument then read is apart of a callback that follows the purchase prompt
     } else {
@@ -93,7 +93,6 @@ function readProducts(id, quantity) {
             // Log all results of the SELECT statement
             console.log(`*******************Checkout********************`);
             for (var i = 0; i < res.length; i++) {
-                // console.log(`\nItem ID: ${res.item_id}|| Product: ${res.product_name}|| Department: ${res.department_name}|| Price: ${res.price}|| Quantitiy: ${res.stock_quantity}`);
                 console.log(`\nEnjoy your ${res[i].product_name}\nYour purchase total is ${res[i].price * quantity}`);
                 connection.end()
             }
